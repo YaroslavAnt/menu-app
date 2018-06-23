@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: hidden;
+  border: solid 3px red
+}
+
+.div {background: #bbb}
+
+.gridList {
+  width: 80%;   
+}
