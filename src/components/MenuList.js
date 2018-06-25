@@ -6,22 +6,30 @@ import './MenuList.css';
 import {withStyles} from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-const styles = {
+const styles = () => ({
   test: {background: '#999'}  
-}
+})
 
 class ItemList extends React.Component {
 
+  constructor(props){
+    super(props);
+    this.state={
+      bg: true
+    }
+  }
+
   handlerClick(){
     console.log(this.props.number+1)
-    console.log(this.props)
+    console.log(this)
+    this.setState({bg: false})
   }
   
   render(){
-    const {classes} = this.props.classes
+    const classes = this.props.classes
     console.log(this.props)
     return (
-      <Grid item  className={classNames('grid', )}  onClick={this.handlerClick.bind(this)} >
+      <Grid item  className={classNames('grid', !this.state.bg&&classes.test)}  onClick={this.handlerClick.bind(this)} >
         <Typography variant="title" >
           Menu {this.props.number+1}
         </Typography>

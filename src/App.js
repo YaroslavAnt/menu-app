@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
-import './App.css';
-import List from './components/GridList'
 import { connect } from 'react-redux';
 
+import NavBar from './NavBar';
+import List from './components/GridList'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <button>user</button>
-          <button>admin</button>
-          <button>login</button>
-        </header>
-        
-        <List />
-        
+      <div>
+        <NavBar />                
+        <List />        
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {return {numbers: state}}
-
 
 export default connect(mapStateToProps)(App);
