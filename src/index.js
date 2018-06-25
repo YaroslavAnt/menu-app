@@ -12,10 +12,18 @@ import Statistics from './Statistics';
 import Administrator from './Administrator';
 
 const mainState = [{num1: 1}, {num2: 2}, {num3: 1}, {num4: 2}]
-const activeState = {btnActive: 0, menuActive: null}
+const activeState = {btnActive: 1, menuActive: null}
 
 const CHANGE_ACTIVE_BTN = 'CHANGE_ACTIVE_BTN';
 const CHANGE_ACTIVE_MENU = 'CHANGE_ACTIVE_MENU';
+
+export const changeActiveBtn = (item) => {
+  console.log('--------'+item)
+  return{
+    type: CHANGE_ACTIVE_BTN,
+    payload: item
+  }
+}
 
 export const changeActiveMenu = (number) => {
   return{
