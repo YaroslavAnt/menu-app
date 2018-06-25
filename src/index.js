@@ -11,18 +11,27 @@ import Login from './Login';
 import Statistics from './Statistics';
 import Administrator from './Administrator';
 
-const defaultState = [{num1: 1}, {num2: 2}, {num3: 1}, {num4: 2}]
+const mainState = [{num1: 1}, {num2: 2}, {num3: 1}, {num4: 2}]
+const activeState = {btnActive: 0, menuActive: null}
 
-const mainReducer = (state=defaultState) => {
+const CHANGE_ACTIVE_BTN = 'CHANGE_ACTIVE_BTN';
+const CHANGE_ACTIVE_MENU = 'CHANGE_ACTIVE_MENU';
+
+export const changeActiveMenu = (number) => {
+  return{
+    type: CHANGE_ACTIVE_MENU,
+    payload: number
+  }
+}
+
+const mainReducer = (state=mainState) => {
   return state
 }
 
-const CHANGE_ACTIVE_BTN = 'CHANGE_ACTIVE_BTN';
-const CHANGE_ACTIVE_MENU = 'CHANGE_ACTIVE_MENU'
-
-const activeReducer = (state={btnActive: 0, menuActive: null}, action) => {
+const activeReducer = (state=activeState, action) => {
   switch(action.type){
     case CHANGE_ACTIVE_BTN: return {...state, btnActive: action.payload}
+    case CHANGE_ACTIVE_MENU: return {...state, menuActive: action.payload}
     default: return state
   }
 }

@@ -8,9 +8,7 @@ import './GridList.css'
 class List extends React.Component {
  
   render(){
-    console.log(this)
     return (
-
       <div className="root">
         <GridList cellHeight={300} className="gridList" cols={2}>
           {this.props.store.main.map((tile, index) => (

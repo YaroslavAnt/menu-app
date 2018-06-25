@@ -3,20 +3,22 @@ import {Grid, Typography, List, ListItem, Avatar, ListItemAvatar, ListItemText} 
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import './MenuList.css';
+import { bindActionCreators } from 'redux';
+import {changeActiveMenu} from '../index'
 
 
 class MenuList extends React.Component {
 
-  handlerClick(){
-    console.log(this.props.number+1)
-    console.log(this)
-    this.setState({bg: false})
-  }
-  
   render(){
-    console.log(this.props+'hvhj')
+    const {changeActiveMenu, number }=this.props
+    
     return (
-      <Grid item  className={classNames('grid', (this.props.store.active.btnActive===this.props.number)&&'active')}  onClick={this.handlerClick.bind(this)} >
+      <Grid item  
+            className={classNames('grid', (this.props.store.active.menuActive===this.props.number)&&'active')}  
+            onClick={() => {
+              console.log(number)
+              changeActiveMenu(number)
+            }} >
         <Typography variant="title" >
           Menu {this.props.number+1}
         </Typography>
@@ -42,4 +44,10 @@ class MenuList extends React.Component {
 
 const mapStateToProps = (state) => {return {store: state}}
 
-export default connect(mapStateToProps)(MenuList)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeActiveMenu: bindActionCreators(changeActiveMenu, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuList)
