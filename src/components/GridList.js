@@ -8,10 +8,12 @@ import './GridList.css'
 class List extends React.Component {
  
   render(){
+    console.log(this)
     return (
+
       <div className="root">
         <GridList cellHeight={300} className="gridList" cols={2}>
-          {this.props.numbers.map((tile, index) => (
+          {this.props.store.main.map((tile, index) => (
             <GridListTile key={index} cols={1}>
               <MenuList number={index} />
             </GridListTile>
@@ -23,6 +25,6 @@ class List extends React.Component {
   
 }
 
-const mapStateToProps = (state) => {return {numbers: state}}
+const mapStateToProps = (state) => {return {store: state}}
 
 export default connect(mapStateToProps)(List);

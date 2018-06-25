@@ -3,21 +3,9 @@ import {Grid, Typography, List, ListItem, Avatar, ListItemAvatar, ListItemText} 
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import './MenuList.css';
-import {withStyles} from '@material-ui/core';
-import PropTypes from 'prop-types';
 
-const styles = () => ({
-  test: {background: '#999'}  
-})
 
-class ItemList extends React.Component {
-
-  constructor(props){
-    super(props);
-    this.state={
-      bg: true
-    }
-  }
+class MenuList extends React.Component {
 
   handlerClick(){
     console.log(this.props.number+1)
@@ -26,16 +14,15 @@ class ItemList extends React.Component {
   }
   
   render(){
-    const classes = this.props.classes
-    console.log(this.props)
+    console.log(this.props+'hvhj')
     return (
-      <Grid item  className={classNames('grid', !this.state.bg&&classes.test)}  onClick={this.handlerClick.bind(this)} >
+      <Grid item  className={classNames('grid', (this.props.store.active.btnActive===this.props.number)&&'active')}  onClick={this.handlerClick.bind(this)} >
         <Typography variant="title" >
           Menu {this.props.number+1}
         </Typography>
         <div >
           <List >
-            {this.props.numbers.map((item, index) => {
+            {this.props.store.main.map((item, index) => {
               return(
                 <ListItem key={index}>
                   <ListItemAvatar>
@@ -53,13 +40,6 @@ class ItemList extends React.Component {
   
 }
 
-ItemList.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+const mapStateToProps = (state) => {return {store: state}}
 
-const mapStateToProps = (state) => {return {numbers: state}}
-
-const MenuList = connect(mapStateToProps)(ItemList)
-
-export default withStyles(styles)(MenuList);
-//export default connect(mapStateToProps)(MenuList)
+export default connect(mapStateToProps)(MenuList)

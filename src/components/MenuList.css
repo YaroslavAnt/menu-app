@@ -1,3 +1,7 @@
 .grid {
   border: solid 5px blue
 }
+
+.active {
+  background: forestgreen
+}

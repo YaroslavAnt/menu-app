@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import NavBar from './NavBar';
 import List from './components/GridList'
@@ -15,6 +14,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {return {numbers: state}}
-
-export default connect(mapStateToProps)(App);
+export default App;
