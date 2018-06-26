@@ -8,40 +8,42 @@ import { connect } from 'react-redux';
 
 class NavBar extends React.Component{
   render() {
-    //const {changeActiveBtn} = this.props;
+    const {changeBtn} = this.props;
+    const btnActive = this.props.store.active.btnActive
     return(
       <div className="NavBar">
         <Link to='/'>
           <Button 
             variant="contained" 
             size="large" 
-            color="primary" 
+            color={btnActive===1?"secondary":"primary"} 
             onClick={() => {
-              changeActiveBtn(1)
+              changeBtn(1)              
             }}>Home</Button>
         </Link>
         <Link to='/statistics'>
           <Button 
             variant="contained" 
             size="large" 
-            color="primary" 
+            color={btnActive===2?"secondary":"primary"} 
             onClick={() => {
-              changeActiveBtn(2)
-              console.log(this.props.store.active.btnActive)
+              changeBtn(2)
             }}>Statistics</Button>
         </Link>
         <Link to='/administrator'>
           <Button 
             variant="contained" 
             size="large" 
-            color="primary" 
+            color={btnActive===3?"secondary":"primary"} 
             onClick={() => {
-              changeActiveBtn(3)
-              console.log(this.props.store.active.btnActive)
+              changeBtn(3)
             }}>Administrator</Button>
         </Link>
         <Link to='/login'>
-          <Button variant="contained" size="large" color="primary" >Login</Button>
+          <Button 
+            variant="contained" 
+            size="large" 
+            color="primary" >Login</Button>
         </Link>
       </div>
     )
@@ -52,7 +54,7 @@ const mapStateToProps = (state) => { return { store: state } }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeActiveBtn: bindActionCreators(changeActiveBtn, dispatch)
+    changeBtn: bindActionCreators(changeActiveBtn, dispatch)
   }
 }
 

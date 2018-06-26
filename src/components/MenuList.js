@@ -16,7 +16,6 @@ class MenuList extends React.Component {
       <Grid item  
             className={classNames('grid', (this.props.store.active.menuActive===this.props.number)&&'active')}  
             onClick={() => {
-              console.log(number)
               changeActiveMenu(number)
             }} >
         <Typography variant="title" >
