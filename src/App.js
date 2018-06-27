@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 
-import NavBar from './NavBar';
-import List from './components/GridList'
+import Home from './Home';
+import { connect } from 'react-redux';
+import Login from './Login';
+import SignIn from './SignIn';
 
 class App extends Component {
   render() {
+    const {email} = this.props;
+    console.log()
     return (
-      <div>
-        <NavBar />                
-        <List />        
-      </div>
+      email.email?<Home />:<SignIn />
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) =>{
+  return{
+    email: state.email
+  }
+}
+
+export default connect(mapStateToProps)(App);

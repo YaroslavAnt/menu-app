@@ -3,10 +3,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
   overflow: hidden;
-  border: solid 3px red
+  border: solid 3px red;
+  background: #bbb
 }
-
-.div {background: #bbb}
 
 .gridList {
   width: 80%;   
