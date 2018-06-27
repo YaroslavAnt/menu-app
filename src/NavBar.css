@@ -1,14 +1,14 @@
 .NavBar {
   background-color: #222;
-  height: 50px;
   padding: 20px;
   color: white;
 }
 
-.Margin{
-  margin: 20px
+.margin{
+  margin: 10px !important
 }
 
-.Align{
-  align: right;
+.float{
+  margin: 10px !important;
+  float: right;
 }

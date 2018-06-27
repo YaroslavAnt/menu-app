@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
-import './NavBar.css'
 import { bindActionCreators } from 'redux';
-import { changeActiveBtn, inputData } from './index';
 import { connect } from 'react-redux';
+
+import './NavBar.css'
+import { changeActiveBtn, inputData } from './index';
 
 class NavBar extends React.Component{
   render() {
@@ -14,6 +15,7 @@ class NavBar extends React.Component{
       <div className="NavBar">
         <Link to='/'>
           <Button            
+            className="margin"
             variant="contained" 
             size="large" 
             color={btnActive===1?"secondary":"primary"} 
@@ -21,6 +23,7 @@ class NavBar extends React.Component{
         </Link>
         <Link to='/statistics'>
           <Button            
+            className="margin"
             variant="contained" 
             size="large" 
             color={btnActive===2?"secondary":"primary"} 
@@ -28,13 +31,15 @@ class NavBar extends React.Component{
         </Link>
         <Link to='/administrator'>
           <Button            
+            className="margin"
             variant="contained" 
             size="large" 
             color={btnActive===3?"secondary":"primary"} 
             onClick={() => { changeBtn(3) }}>Administrator</Button>
         </Link>
-        <Link to='/signup'>
+        <Link to='/signup' >
           <Button            
+            className="float"
             variant="contained" 
             size="large" 
             onClick={() => { deleteEmail('', '') }} >Signout</Button>
@@ -55,4 +60,3 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
 
-//<Button variant="contained" size="large" color="primary" >Login</Button>
