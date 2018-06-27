@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Home from './Home';
-import { connect } from 'react-redux';
-import Login from './Login';
 import SignIn from './SignIn';
 
 class App extends Component {
   render() {
     const {email} = this.props;
-    console.log()
+    console.log(email)
+    console.log(this.props)
     return (
-      email.email?<Home />:<SignIn />
+      email?<Home />:<SignIn />
     );
   }
 }
 
 const mapStateToProps = (state) =>{
   return{
-    email: state.email
+    email: state.data.email
   }
 }
 

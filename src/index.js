@@ -6,17 +6,17 @@ import { HashRouter, Route } from 'react-router-dom';
 import { combineReducers } from 'redux'
 
 import './index.css';
-import Login from './Login';
 import Statistics from './Statistics';
 import Administrator from './Administrator';
 import App from './App';
+import SignUp from './SignUp';
 
 const mainState = [{num1: 1}, {num2: 2}, {num3: 1}, {num4: 2}]
 const activeState = {btnActive: 1, menuActive: null}
 
 const CHANGE_ACTIVE_BTN = 'CHANGE_ACTIVE_BTN';
 const CHANGE_ACTIVE_MENU = 'CHANGE_ACTIVE_MENU';
-const INPUT_EMAIL = 'INPUT_EMAIL';
+const INPUT_DATA = 'INPUT_DATA';
 
 export const changeActiveBtn = (item) => {
   return{
@@ -32,10 +32,11 @@ export const changeActiveMenu = (number) => {
   }
 }
 
-export const inputEmail = (email) => {
+export const inputData = (email, password) => {
   return{
-    type: INPUT_EMAIL,
-    payload: email
+    type: INPUT_DATA,
+    email,
+    password
   }
 }
 
@@ -47,19 +48,23 @@ const activeReducer = (state=activeState, action) => {
   switch(action.type){
     case CHANGE_ACTIVE_BTN: return {...state, btnActive: action.payload}
     case CHANGE_ACTIVE_MENU: return {...state, menuActive: action.payload}
-    case INPUT_EMAIL: return {...state, email: action.payload}
+    //case INPUT_EMAIL: return {...state, email: action.payload}
     default: return state
   }
 }
 
-const emailReducer = (state={email: ''}) => {
-  return state
+const dataReducer = (state={email: '', password: ''}, action) => {
+  if(action.type===INPUT_DATA){
+    return {...state, email: action.email, password: action.password}
+  } else {
+    return state
+  }  
 }
 
 const rootReducer = combineReducers({
   main: mainReducer,
   active: activeReducer,
-  email: emailReducer
+  data: dataReducer,
 })
 
 const store = createStore(rootReducer)
@@ -73,7 +78,7 @@ class Wrapper extends React.Component{
             <Route exact path="/" component={App} />
             <Route path="/statistics" component={Statistics} />
             <Route path="/administrator" component={Administrator} />
-            <Route path="/login" component={Login} />
+            <Route path="/signup" component={SignUp} />
           </div>          
         </HashRouter>
       </Provider>

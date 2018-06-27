@@ -1,12 +1,11 @@
 import React from 'react';
-import NavBar from './NavBar';
 import {Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button} from '@material-ui/core';
 import {Link} from 'react-router-dom'
 
 class SignIn extends React.Component{
   render() {
     return(
-      <Dialog
+        <Dialog
           open={true}
           aria-labelledby="form-dialog-title"
         >
@@ -26,19 +25,16 @@ class SignIn extends React.Component{
               type="password"
               autoComplete="current-password"
               margin="normal"
+              fullWidth
             />
           </DialogContent>
           <DialogActions>            
             <Link to='/'>
-              <Button onClick={console.log('+++++')} color="primary">
+              <Button color="primary" variant="contained" >
                 Sign In
               </Button>
             </Link>
-            <Link to='/statistics'>
-              <Button onClick={console.log('+++++')} color="primary">
-                Sign Up
-              </Button>
-            </Link>
+            <p>You didn't have profil? Please <Link to='/signup'>Sign Up</Link></p>
           </DialogActions>
         </Dialog>
     )
