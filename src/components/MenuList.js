@@ -10,8 +10,9 @@ import {changeActiveMenu} from '../index'
 class MenuList extends React.Component {
 
   render(){
-    const {changeActiveMenu, number }=this.props
-    
+    const {changeActiveMenu, number }=this.props;
+    const arr = []
+    for(let i = 0; i<2; i++){arr.push(0)}
     return (
       <Grid item  
             className={classNames('grid', (this.props.store.active.menuActive===this.props.number)&&'active')}  
@@ -23,7 +24,7 @@ class MenuList extends React.Component {
         </Typography>
         <div >
           <List >
-            {this.props.store.main.map((item, index) => {
+            {arr.map((item, index) => {
               return(
                 <ListItem key={index}>
                   <ListItemAvatar>

@@ -3,10 +3,10 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import { connect } from 'react-redux';
 
-import MenuList from './MenuList';
+import SetMenuList from './SetMenuList';
 import './GridList.css'
 
-class List extends React.Component {
+class SetList extends React.Component {
  
   render(){
     return (
@@ -14,7 +14,7 @@ class List extends React.Component {
         <GridList cellHeight={300} className="gridList" cols={2}>
           {this.props.store.main.map((tile, index) => (
             <GridListTile key={index} cols={1}>
-              <MenuList number={index} />
+              <SetMenuList number={index} />
             </GridListTile>
           ))}
         </GridList>
@@ -26,4 +26,4 @@ class List extends React.Component {
 
 const mapStateToProps = (state) => {return {store: state}}
 
-export default connect(mapStateToProps)(List);
+export default connect(mapStateToProps)(SetList);

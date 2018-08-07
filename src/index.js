@@ -14,9 +14,20 @@ import SignUp from './SignUp';
 const mainState = [{num1: 1}, {num2: 2}, {num3: 1}, {num4: 2}]
 const activeState = {btnActive: 1, menuActive: null}
 
+const AMOUNT_OF_MENUS = 'AMOUNT_OF_MENUS';
 const CHANGE_ACTIVE_BTN = 'CHANGE_ACTIVE_BTN';
 const CHANGE_ACTIVE_MENU = 'CHANGE_ACTIVE_MENU';
 const INPUT_DATA = 'INPUT_DATA';
+const SET_FIRST_DISH = 'SET_FIRST_DISH';
+const SET_SECOND_DISH = 'SET_SECOND_DISH';
+const SET_THIRD_DISH = 'SET_THIRD_DISH';
+
+export const setAmount = (amount) => {
+  return{
+    type: AMOUNT_OF_MENUS,
+    payload: amount
+  }
+}
 
 export const changeActiveBtn = (item) => {
   return{
@@ -40,6 +51,21 @@ export const inputData = (email, password) => {
   }
 }
 
+export const setDish = (first, second, third) => {
+  return{
+    type: SET_FIRST_DISH,
+    
+  }
+}
+
+const amountOfMenusReducer = (state='', action) => {
+  if(action.type === AMOUNT_OF_MENUS){
+    return {state: action.payload}
+  } else {
+    return state
+  }
+}
+
 const mainReducer = (state=mainState) => {
   return state
 }
@@ -53,7 +79,7 @@ const activeReducer = (state=activeState, action) => {
   }
 }
 
-const dataReducer = (state={email: '', password: ''}, action) => {
+const dataReducer = (state={email: 'w', password: 'w'}, action) => {
   if(action.type===INPUT_DATA){
     return {...state, email: action.email, password: action.password}
   } else {
@@ -62,6 +88,7 @@ const dataReducer = (state={email: '', password: ''}, action) => {
 }
 
 const rootReducer = combineReducers({
+  amount: amountOfMenusReducer,
   main: mainReducer,
   active: activeReducer,
   data: dataReducer,
